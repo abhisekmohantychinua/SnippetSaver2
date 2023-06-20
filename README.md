@@ -15,6 +15,3 @@
 
 [![facebook](https://github.com/abhisekmohantychinua/SnippetSaver2/assets/86331203/7c3128a2-11f0-47da-ac70-d8574111a88c)](https://www.facebook.com/abhisek.mohanty.79069/)
 [![linkedin](https://github.com/abhisekmohantychinua/SnippetSaver2/assets/86331203/8033b9d3-336f-498f-9842-f0610d57ee9b)](https://www.linkedin.com/in/abhisek-mohanty-3a2241235/)
-
-[![github](https://github.com/abhisekmohantychinua/SnippetSaver2/assets/86331203/18006056-4f59-47f1-9558-9771137c5dc2)](https://github.com/abhisekmohantychinua)
-
