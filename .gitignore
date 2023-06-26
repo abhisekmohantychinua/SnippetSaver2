@@ -22,3 +22,6 @@ gradle-app.setting
 
 ###   Ignore Intellij Idea ###
 .idea
+
+### ENV ###
+.env
