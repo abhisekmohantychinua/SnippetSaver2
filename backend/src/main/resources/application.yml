@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      uri: ${URI}
+      database: ${DATABASE}
+      username: ${USERNAME}
+      password: ${PASSWORD}
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${DEV_MAIL}
+    password: ${GMAIL}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+static:
+  data:
+    #    admin-mail: ${MY_MAIL}
+    dev-mail: ${DEV_MAIL}
+    secret-key: ${SECRET_KEY}
