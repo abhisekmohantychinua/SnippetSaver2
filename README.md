@@ -9,7 +9,7 @@
 * If the above idea goes well, then I will implement a likes and comment system. I have a plan to integrate a chat
   system with these. Though this project will be a microservice, it is easy to add more and more services.
 
-> Documentation [Postman](https://documenter.getpostman.com/view/23395461/2s93m7X1zz)
+> Documentation [Postman](https://documenter.getpostman.comview/23395461/2s93z86NXV)
 
 ## Contact me
 
