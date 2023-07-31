@@ -9,12 +9,14 @@ import io.jsonwebtoken.security.SignatureException;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 @RequiredArgsConstructor
@@ -41,6 +44,21 @@ public class GlobalExceptionHandler {
                 .build();
         return ResponseEntity
                 .internalServerError()
+                .body(exceptionDto);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ExceptionDto> handleAuthenticationException(AuthenticationException e) {
+        ExceptionDto exceptionDto = ExceptionDto
+                .builder()
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .message("""
+                        Invalid Email or Password cannot authorize User.
+                        """)
+                .details(null)
+                .build();
+        return ResponseEntity
+                .status(exceptionDto.getStatus())
                 .body(exceptionDto);
     }
 
@@ -171,7 +189,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageConversionException.class)
-    public ResponseEntity<ExceptionDto> handleHttpMessageConversionException(HttpMessageConversionException exception){
+    public ResponseEntity<ExceptionDto> handleHttpMessageConversionException(HttpMessageConversionException exception) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         String message = "Error converting HTTP message";
         List<String> details = Collections.singletonList(exception.getLocalizedMessage().concat("Or Read the Documentation "));
@@ -183,6 +201,38 @@ public class GlobalExceptionHandler {
                 .build();
         return ResponseEntity
                 .status(exceptionDto.getStatus())
+                .body(exceptionDto);
+    }
+
+    @ExceptionHandler(InvalidCredentialException.class)
+    public ResponseEntity<ExceptionDto> handleInvalidCredentialsException(InvalidCredentialException e) {
+        return ResponseEntity
+                .status(e.getExceptionDto().getStatus())
+                .body(e.getExceptionDto());
+    }
+
+    @ExceptionHandler(InappropriateActionException.class)
+    public ResponseEntity<ExceptionDto> handleInappropriateActionException(InappropriateActionException e) {
+        return ResponseEntity
+                .status(e.getExceptionDto().getStatus())
+                .body(e.getExceptionDto());
+    }
+
+    @ExceptionHandler(ClientAbortException.class)
+    public void handleClientAbortException(ClientAbortException e) {
+        System.out.println("Client aborted " + e.getMessage());
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<ExceptionDto> handleNoSuchElementException(NoSuchElementException e) {
+        ExceptionDto exceptionDto = ExceptionDto
+                .builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .message("Requested Resource not found on server")
+                .details(List.of())
+                .build();
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
                 .body(exceptionDto);
     }
 }

@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Dashboard from './pages/private/Dashboard.tsx';
+import PrivateRoutes from './pages/PrivateRoutes.tsx';
+import CreateAccount from './pages/CreateAccount.tsx';
+import ErrorPage from './pages/ErrorPage.tsx';
+import Home from './pages/Home.tsx';
+import MyProfile from "./pages/private/MyProfile.tsx";
+import SnippetPage from "./pages/private/SnippetPage.tsx";
+import 'sweetalert2/src/sweetalert2.scss'
+import UserProfile from "./pages/private/UserProfile.tsx";
+import SearchPage from "./pages/private/SearchPage.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    return (
+        <>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+            <BrowserRouter>
+                <Routes>
+                    <Route index element={<Home/>}/>
+                    <Route path="/createaccount/:token" element={<CreateAccount/>}/>
+                    <Route path="/user" element={<PrivateRoutes/>}>
+                        <Route path="dashboard" element={<Dashboard/>}/>
+                        <Route path="me" element={<MyProfile/>}/>
+                        <Route path="snippet/:id" element={<SnippetPage/>}/>
+                        <Route path=":id" element={<UserProfile/>}/>
+                        <Route path="search/:query" element={<SearchPage/>}/>
+                    </Route>
+                    <Route path="*" element={<ErrorPage/>}/>
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
+};
+
+export default App;

@@ -1,6 +1,7 @@
 package dev.abhisek.backend.service;
 
-import dev.abhisek.backend.dto.SnippetRequestDto;
+import dev.abhisek.backend.dto.snippet.SnippetDto;
+import dev.abhisek.backend.dto.snippet.SnippetRequestDto;
 import dev.abhisek.backend.entity.Snippet;
 import dev.abhisek.backend.entity.User;
 
@@ -9,18 +10,21 @@ import java.util.List;
 public interface SnippetService {
     Snippet addSnippet(SnippetRequestDto snippetRequestDto, User user);
 
-    List<Snippet> getRandomSnippets();
+    List<SnippetDto> getRandomSnippets();
 
-    Snippet getSnippetBySnippetId(String id);
+    SnippetDto getSnippetBySnippetId(String id);
 
-    List<Snippet> getSnippetsByUserId(String userId);
+    List<SnippetDto> getSnippetsByUserId(String userId);
 
-    List<Snippet> getSnippetsByTags(String tag);
+    List<SnippetDto> getSnippetsByTags(String tag);
 
-    List<Snippet> getSnippetsByTitle(String title);
+    List<SnippetDto> getSnippetsByTitle(String title);
+    List<SnippetDto> getSnippetsByLanguage(String language);
 
     void deleteSnippet(String id, User user);
 
     Snippet updateSnippet(String id, SnippetRequestDto snippetRequestDto, User user);
+
+    void like(String id, String userId);
 
 }

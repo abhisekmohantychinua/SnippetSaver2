@@ -1,11 +1,10 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.user;
 
+import dev.abhisek.backend.entity.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -15,5 +14,10 @@ public class UserResponseDto {
     private String id;
     private String firstname;
     private String lastname;
-    private List<SnippetDto> snippets;
+    private String email;
+    private Roles roles;
+
+    public String getName() {
+        return firstname + " " + lastname;
+    }
 }

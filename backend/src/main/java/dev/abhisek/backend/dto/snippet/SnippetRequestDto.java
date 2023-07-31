@@ -1,4 +1,4 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.snippet;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,5 +15,6 @@ public class SnippetRequestDto {
     private String title;
     private String description;
     private String code;
+    private String language;
     private List<String> tags;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public interface SnippetRepository extends MongoRepository<Snippet, String> {
     //    Randomized list of SNIPPETS to show on dashboard
     @Aggregation(pipeline = {
-            "{ $sample: { size: 7 } }"
+            "{ $sample: { size: 15 } }"
     })
     List<Snippet> findRandomSnippets();
 
@@ -20,5 +20,7 @@ public interface SnippetRepository extends MongoRepository<Snippet, String> {
     List<Snippet> findAllByTagsContainingIgnoreCase(String tag);
 
     List<Snippet> findAllByTitleContainingIgnoreCase(String title);
+
+    List<Snippet> findAllByLanguageContainingIgnoreCase(String language);
 }
 

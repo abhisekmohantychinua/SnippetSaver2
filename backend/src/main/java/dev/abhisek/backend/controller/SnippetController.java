@@ -1,6 +1,7 @@
 package dev.abhisek.backend.controller;
 
-import dev.abhisek.backend.dto.SnippetRequestDto;
+import dev.abhisek.backend.dto.snippet.SnippetDto;
+import dev.abhisek.backend.dto.snippet.SnippetRequestDto;
 import dev.abhisek.backend.entity.Snippet;
 import dev.abhisek.backend.entity.User;
 import dev.abhisek.backend.service.SnippetService;
@@ -26,27 +27,33 @@ public class SnippetController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Snippet>> getRandomSnippets() {
+    public ResponseEntity<List<SnippetDto>> getRandomSnippets() {
         return ResponseEntity.ok(snippetService.getRandomSnippets());
     }
 
     @GetMapping("/snippet/{id}")
-    public ResponseEntity<Snippet> getSnippetBySnippetId(@PathVariable String id) {
+    public ResponseEntity<SnippetDto> getSnippetBySnippetId(@PathVariable String id) {
         return ResponseEntity.ok(snippetService.getSnippetBySnippetId(id));
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Snippet>> getSnippetsByUserId(@PathVariable String userId) {
+    public ResponseEntity<List<SnippetDto>> getSnippetsByUserId(@PathVariable String userId) {
         return ResponseEntity.ok(snippetService.getSnippetsByUserId(userId));
     }
 
     @GetMapping("/tags")
-    public ResponseEntity<List<Snippet>> getSnippetsByTags(@RequestParam String tag) {
+    public ResponseEntity<List<SnippetDto>> getSnippetsByTags(@RequestParam String tag) {
         return ResponseEntity.ok(snippetService.getSnippetsByTags(tag));
     }
 
+    @GetMapping("/language")
+    public ResponseEntity<List<SnippetDto>> getSnippetByLanguage(@RequestParam String language) {
+        return ResponseEntity.ok(snippetService.getSnippetsByLanguage(language));
+    }
+
+
     @GetMapping("/title")
-    public ResponseEntity<List<Snippet>> getSnippetsByTitle(@RequestParam String title) {
+    public ResponseEntity<List<SnippetDto>> getSnippetsByTitle(@RequestParam String title) {
         return ResponseEntity.ok(snippetService.getSnippetsByTitle(title));
     }
 
@@ -70,5 +77,16 @@ public class SnippetController {
         return ResponseEntity
                 .accepted()
                 .body(snippetService.updateSnippet(id, snippetRequestDto, user));
+    }
+
+    @PostMapping("/{id}/like")
+    public ResponseEntity<Void> like(
+            @PathVariable String id,
+            @AuthenticationPrincipal User user
+    ) {
+        snippetService.like(id, user.getId());
+        return ResponseEntity
+                .noContent()
+                .build();
     }
 }

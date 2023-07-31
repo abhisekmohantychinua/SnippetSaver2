@@ -1,42 +1,99 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+    margin: 0;
+    padding: 0;
+    background: url("/background.jpg") center center/cover fixed;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.bg-gradient-custom {
+    background: linear-gradient(135deg, #007bff, #00ff00) !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-gradient-custom {
+    color: transparent;
+    background-image: linear-gradient(135deg, #007bff, #00ff00) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.text-purple {
+    color: #A437DB !important;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
-.card {
-  padding: 2em;
+.bg-opacity-25 {
+    background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
-.read-the-docs {
-  color: #888;
+.btn-gradient-custom {
+    background: linear-gradient(135deg, #007bff, #00ff00);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-gradient-custom:hover {
+    background: linear-gradient(135deg, #0069d9, #00e600);
+}
+
+.btn-purple {
+    background: #A437DB !important;
+    color: #ffffff;
+    border: none !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+    background: #BB84E8 !important;
+}
+
+.btn-gradient-custom-outline {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid transparent; /* Change the border color to transparent */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Add border-color transition */
+}
+
+.btn-gradient-custom-outline:hover {
+    background: linear-gradient(135deg, #007bff, #00ff00);
+    color: #ffffff;
+    border-color: #007bff; /* Add border color on hover */
+}
+
+.btn-purple-outline {
+    background-color: transparent !important;
+    color: #A437DB !important;
+    border: 2px solid #A437DB !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Add border-color transition */
+}
+
+.btn-purple-outline:hover {
+    background: #A437DB !important;
+    color: #ffffff !important;
+    border-color: #BB84E8 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.title-link a {
+    text-decoration: none;
+}
+
+.title-link a:hover {
+    text-decoration: underline;
 }

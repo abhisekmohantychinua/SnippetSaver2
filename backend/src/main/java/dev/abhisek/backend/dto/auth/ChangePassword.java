@@ -1,4 +1,4 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserRequestDto {
-    private String firstname;
-    private String lastname;
+public class ChangePassword {
+    private String oldPassword;
+    private String newPassword;
+    private String re_Password;
 }

@@ -1,5 +1,7 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.user;
 
+import dev.abhisek.backend.dto.review.ReviewDto;
+import dev.abhisek.backend.dto.snippet.SnippetDto;
 import dev.abhisek.backend.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,4 +17,5 @@ import java.util.List;
 public class Me {
     private User me;
     private List<SnippetDto> mySnippets;
+    private List<ReviewDto> myReviews;
 }

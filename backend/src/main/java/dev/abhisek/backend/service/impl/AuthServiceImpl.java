@@ -1,9 +1,10 @@
 package dev.abhisek.backend.service.impl;
 
-import dev.abhisek.backend.dto.AuthRequest;
-import dev.abhisek.backend.dto.ChangePassword;
-import dev.abhisek.backend.dto.UserDto;
-import dev.abhisek.backend.dto.UserRequestDto;
+import dev.abhisek.backend.dto.auth.AuthRequest;
+import dev.abhisek.backend.dto.auth.AuthResponse;
+import dev.abhisek.backend.dto.auth.ChangePassword;
+import dev.abhisek.backend.dto.user.UserResponseDto;
+import dev.abhisek.backend.dto.user.UserRequestDto;
 import dev.abhisek.backend.entity.Mail;
 import dev.abhisek.backend.entity.RegisterRequest;
 import dev.abhisek.backend.entity.TokenType;
@@ -39,6 +40,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void addRegisterRequest(RegisterRequest request) {
+        AppUtil.validatePassword(request.getPassword());
+        AppUtil.validateEmail(request.getEmail());
         request.setId(UUID.randomUUID().toString());
         request.setPassword(passwordEncoder.encode(request.getPassword()));
         request.setTokenType(TokenType.REGISTER);
@@ -52,16 +55,18 @@ public class AuthServiceImpl implements AuthService {
         Mail mail = Mail.builder()
                 .to(request.getEmail())
                 .subject("Email verification !!!")
-                .messages("URL ENDPOINT" +
-                        "/?verificationToken=" +
-                        verificationToken)
+                .messages("Thank you for Registering in SnippetService.\n\n\n" +
+                        "Your verification token : " + verificationToken + "\n" +
+                        "\t\tOR\n\n" +
+                        "Verify yourself at http://localhost:3000/createaccount/" + verificationToken
+                )
                 .build();
         MailUtil.sendMail(mail);
 
     }
 
     @Override
-    public UserDto verifyRegisterToken(String token, UserRequestDto userRequestDto) {
+    public UserResponseDto verifyRegisterToken(String token, UserRequestDto userRequestDto) {
         RegisterRequest request = requestRepository
                 .findByVerificationTokenAndVerifiedFalseAndTokenType(token, TokenType.REGISTER)
                 .orElseThrow(() -> new InvalidTokenException(
@@ -85,7 +90,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String authorize(AuthRequest request) {
+    public AuthResponse authorize(AuthRequest request) {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
@@ -99,7 +104,7 @@ public class AuthServiceImpl implements AuthService {
                                 "Login unsuccessful !!!")
                 ));
 
-        return jwtUtil.generateToken(user);
+        return new AuthResponse(jwtUtil.generateToken(user), user.getId());
     }
 
     @Override
@@ -149,7 +154,7 @@ public class AuthServiceImpl implements AuthService {
                                 changePassword.toString())
 
                 ));
-
+        AppUtil.validatePassword(changePassword.getNewPassword());
         if (!changePassword.getNewPassword().equals(changePassword.getRe_Password())) {
             throw new NotMatchingException("The fields doesn't match!!!",
                     List.of("newPassword : " + changePassword.getNewPassword(),

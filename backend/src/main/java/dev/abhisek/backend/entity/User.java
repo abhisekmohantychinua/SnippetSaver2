@@ -27,6 +27,10 @@ public class User implements UserDetails {
     private String password;
     private Roles roles;
 
+    public String getName() {
+        return firstname + " " + lastname;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(roles.name()));

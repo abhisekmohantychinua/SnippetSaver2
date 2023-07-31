@@ -1,10 +1,13 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.user;
 
-import dev.abhisek.backend.entity.Roles;
+import dev.abhisek.backend.dto.review.ReviewDto;
+import dev.abhisek.backend.entity.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -14,6 +17,6 @@ public class UserDto {
     private String id;
     private String firstname;
     private String lastname;
-    private String email;
-    private Roles roles;
+    private List<Snippet> snippets;
+    private List<ReviewDto> reviews;
 }

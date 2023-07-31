@@ -1,8 +1,8 @@
 package dev.abhisek.backend.controller;
 
-import dev.abhisek.backend.dto.ChangePassword;
-import dev.abhisek.backend.dto.Me;
-import dev.abhisek.backend.dto.UserResponseDto;
+import dev.abhisek.backend.dto.auth.ChangePassword;
+import dev.abhisek.backend.dto.user.Me;
+import dev.abhisek.backend.dto.user.UserDto;
 import dev.abhisek.backend.entity.User;
 import dev.abhisek.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,18 +24,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getUserById(@PathVariable String id, @AuthenticationPrincipal User user) {
-        return ResponseEntity.ok(userService.getUserById(id));
+    public ResponseEntity<UserDto> getUserById(@PathVariable String id, @AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(userService.getUserDtoById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponseDto>> getAllUser(@AuthenticationPrincipal User user) {
+    public ResponseEntity<List<UserDto>> getAllUser(@AuthenticationPrincipal User user) {
         return ResponseEntity.ok(userService.getAllUser());
     }
 
     @GetMapping("/name")
-    public ResponseEntity<List<UserResponseDto>> getUsersByName(@RequestParam String firstname) {
+    public ResponseEntity<List<UserDto>> getUsersByName(@RequestParam String firstname) {
         return ResponseEntity.ok(userService.getUserByName(firstname));
+    }
+
+    @GetMapping("/lastname")
+    public ResponseEntity<List<UserDto>> getUsersByLastName(@RequestParam String lastname) {
+        return ResponseEntity.ok(userService.getUserByLastName(lastname));
     }
 
     @DeleteMapping("/{id}")
