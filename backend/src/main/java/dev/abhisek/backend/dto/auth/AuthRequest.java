@@ -1,4 +1,4 @@
-package dev.abhisek.backend.dto;
+package dev.abhisek.backend.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
