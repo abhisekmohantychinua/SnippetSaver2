@@ -2,6 +2,7 @@ package dev.abhisek.backend.util;
 
 
 import dev.abhisek.backend.entity.RegisterRequest;
+import dev.abhisek.backend.exception.InvalidCredentialException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 @RequiredArgsConstructor
@@ -61,6 +65,31 @@ public class AppUtil {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public static void validateEmail(String email) throws InvalidCredentialException {
+// Use a regular expression to validate the email format
+        String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        if (!matcher.matches()) {
+            throw new InvalidCredentialException(
+                    List.of("Invalid email provided !",
+                            "email : " + email));
+        }
+    }
+
+    public static void validatePassword(String password) throws InvalidCredentialException {
+        // Password should contain at least 8 characters and at least 4 numbers
+        String passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d.*\\d.*\\d.*\\d)[A-Za-z\\d]{8,}$";
+        Pattern pattern = Pattern.compile(passwordRegex);
+        Matcher matcher = pattern.matcher(password);
+        if (!matcher.matches()) {
+            throw new InvalidCredentialException(List.of("Invalid password provided!",
+                    "password : " + password,
+                    "Password must contain at least 8 characters.",
+                    "Password must contain at least 4 numbers."));
+        }
     }
 
 }
