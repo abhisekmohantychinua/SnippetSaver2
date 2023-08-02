@@ -10,6 +10,7 @@ import {AxiosError, AxiosResponse} from "axios";
 import {AuthResponse} from "../models/dto/auth/AuthResponse.tsx";
 import api from '../api/AxiosConfig.tsx'
 import {AuthRequest} from "../models/dto/auth/AuthRequest.tsx";
+import ForgetPasswordModal from "../components/ForgetPasswordModal.tsx";
 
 interface Prop {
     setMode: React.Dispatch<React.SetStateAction<boolean>>
@@ -174,7 +175,7 @@ const Login = ({setMode}: Prop) => {
                                         </Col>
                                     </Form.Group>
                                     <Form.Text className="mb-5 mx-4 fw-semibold">
-                                        <a href="/forget-password" style={{color: '#863486'}}>Forget password ?</a>
+                                        <ForgetPasswordModal/>
                                     </Form.Text>
                                     <Row className="d-flex justify-content-around my-5">
                                         <Button

@@ -12,7 +12,7 @@ import {AxiosResponse} from "axios";
 import {SnippetDto} from "../../models/dto/snippet/SnippetDto.tsx";
 import Like from "../../components/Like.tsx";
 import Comment from "../../components/Comment.tsx";
-import Share from "../../components/Share.tsx";
+import Share from "../../components/shares/Share.tsx";
 import ThreeDot from "../../components/ThreeDot.tsx";
 import {AxiosError} from "axios/index";
 import {ErrorDto} from "../../models/ErrorDto.tsx";

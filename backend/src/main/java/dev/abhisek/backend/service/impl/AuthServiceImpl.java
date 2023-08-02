@@ -3,8 +3,8 @@ package dev.abhisek.backend.service.impl;
 import dev.abhisek.backend.dto.auth.AuthRequest;
 import dev.abhisek.backend.dto.auth.AuthResponse;
 import dev.abhisek.backend.dto.auth.ChangePassword;
-import dev.abhisek.backend.dto.user.UserResponseDto;
 import dev.abhisek.backend.dto.user.UserRequestDto;
+import dev.abhisek.backend.dto.user.UserResponseDto;
 import dev.abhisek.backend.entity.Mail;
 import dev.abhisek.backend.entity.RegisterRequest;
 import dev.abhisek.backend.entity.TokenType;
@@ -181,6 +181,6 @@ public class AuthServiceImpl implements AuthService {
                 .messages("Your new password is : " + changePassword.getNewPassword())
                 .build();
         MailUtil.sendMail(mail);
-
+        userRepository.save(user);
     }
 }

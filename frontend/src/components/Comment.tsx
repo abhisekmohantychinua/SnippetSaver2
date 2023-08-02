@@ -1,4 +1,4 @@
-import {FaRegCommentDots} from "react-icons/fa6";
+import ChatIcon from '@mui/icons-material/Chat';
 import {Alert, Button, Card, FloatingLabel, Form, Offcanvas, Spinner} from "react-bootstrap";
 import React, {useState} from "react";
 import api from "../api/AxiosConfig.tsx";
@@ -70,7 +70,7 @@ const Comment = ({snippetDto}: Prop) => {
     }
     return (
         <>
-            <FaRegCommentDots className="cursor-pointer" onClick={handleShow}/>
+            <ChatIcon className="cursor-pointer" onClick={handleShow}/>
             <Offcanvas show={show} onHide={handleClose} placement={"end"}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title className="mt-1 mx-1 cursor-pointer title-link">

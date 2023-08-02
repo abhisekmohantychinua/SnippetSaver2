@@ -8,7 +8,7 @@ import {TiTick} from "react-icons/ti";
 import {AppUtil} from "../utils/AppUtil.tsx";
 import Like from "./Like.tsx";
 import Comment from "./Comment.tsx";
-import Share from "./Share.tsx";
+import Share from "./shares/Share.tsx";
 import {SnippetDto} from "../models/dto/snippet/SnippetDto.tsx";
 
 interface SnippetCardProps {
@@ -68,7 +68,8 @@ const SnippetCard: React.FC<SnippetCardProps> = ({snippetDto}) => {
                             <Comment snippetDto={snippetDto}/>
                         </Col>
                         <Col className="col-2">
-                            <Share/>
+                            <Share link={"http://localhost:3000/user/snippet/" + snippetDto.id}
+                                   desc={snippetDto.description}/>
                         </Col>
                     </Row>
                 </Card.Footer>
