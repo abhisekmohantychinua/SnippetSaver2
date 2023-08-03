@@ -10,6 +10,7 @@ import SnippetPage from "./pages/private/SnippetPage.tsx";
 import 'sweetalert2/src/sweetalert2.scss'
 import UserProfile from "./pages/private/UserProfile.tsx";
 import SearchPage from "./pages/private/SearchPage.tsx";
+import ForgetPassword from "./pages/ForgetPassword.tsx";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path="/createaccount/:token" element={<CreateAccount/>}/>
+                    <Route path="/forget-password/:token" element={<ForgetPassword/>}/>
                     <Route path="/user" element={<PrivateRoutes/>}>
                         <Route path="dashboard" element={<Dashboard/>}/>
                         <Route path="me" element={<MyProfile/>}/>

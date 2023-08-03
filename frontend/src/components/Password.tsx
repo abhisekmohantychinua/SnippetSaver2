@@ -122,7 +122,7 @@ const Password = () => {
                                         type="invalid">{errors.newPassword}
                                     </Form.Control.Feedback>
                                 </FloatingLabel>
-                                <FloatingLabel label="Old Password" className="mb-2">
+                                <FloatingLabel label="Re enter password" className="mb-2">
                                     <Form.Control
                                         type="text"
                                         name="rePassword"

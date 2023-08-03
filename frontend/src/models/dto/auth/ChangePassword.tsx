@@ -1,5 +1,5 @@
 export interface ChangePassword {
-    oldPassword: string,
+    oldPassword?: string,
     newPassword: string,
     re_Password: string
 }
