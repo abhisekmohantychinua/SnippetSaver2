@@ -5,6 +5,7 @@ import api from "../api/AxiosConfig.tsx";
 import {UserRequestDto} from "../models/dto/user/UserRequestDto.tsx";
 import {AxiosError, AxiosResponse} from "axios";
 import {UserResponseDto} from "../models/dto/user/UserResponseDto.tsx";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {ErrorDto} from "../models/ErrorDto.tsx";
 

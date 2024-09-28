@@ -8,6 +8,7 @@ import {Editor} from "@monaco-editor/react";
 import api from '../api/AxiosConfig';
 import {SnippetRequestDto} from "../models/dto/snippet/SnippetRequestDto";
 import {AxiosError, AxiosResponse} from "axios";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 interface SnippetModalProps {
@@ -15,7 +16,7 @@ interface SnippetModalProps {
 
 const SnippetModal: React.FC<SnippetModalProps> = () => {
     const [show, setShow] = useState(false);
-    const [customAlert, setCustomAlert] = useState<CustomAlert | undefined>();
+    const [customAlert] = useState<CustomAlert | undefined>();
     const schema = yup.object({
         title: yup
             .string()

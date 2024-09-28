@@ -3,6 +3,7 @@ import {useState} from "react";
 import api from '../api/AxiosConfig.tsx'
 import {AxiosError, AxiosResponse} from "axios";
 import {ErrorDto} from "../models/ErrorDto.tsx";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 const ForgetPasswordModal = () => {

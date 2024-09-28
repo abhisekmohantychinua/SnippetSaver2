@@ -2,13 +2,14 @@ import ChatIcon from '@mui/icons-material/Chat';
 import {Alert, Button, Card, FloatingLabel, Form, Offcanvas, Spinner} from "react-bootstrap";
 import React, {useState} from "react";
 import api from "../api/AxiosConfig.tsx";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+// @ts-ignore
+import Swal from "sweetalert2/dist/sweetalert2.js"
 import 'sweetalert2/src/sweetalert2.scss'
 import {SnippetDto} from "../models/dto/snippet/SnippetDto.tsx";
 import {ReviewDto} from "../models/dto/review/ReviewDto.tsx";
 import {AxiosResponse} from "axios";
 import ThreeDot from "./ThreeDot.tsx";
-import {AxiosError} from "axios/index";
+import {AxiosError} from "axios";
 import {ErrorDto} from "../models/ErrorDto.tsx";
 import {useNavigate} from "react-router-dom";
 

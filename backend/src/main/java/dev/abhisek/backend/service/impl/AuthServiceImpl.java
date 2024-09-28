@@ -133,8 +133,8 @@ public class AuthServiceImpl implements AuthService {
         Mail mail = Mail.builder()
                 .to(request.getEmail())
                 .subject("Password Reset Request !!!")
-                .messages("URL ENDPOINT" +
-                        "/?verificationToken=" +
+                .messages("http://localhost:3000" +
+                        "/forget-password/" +
                         verificationToken +
                         "\n If It is not you contact the developers or give feedback about this issue.")
                 .build();

@@ -49,8 +49,9 @@ const Register = ({setMode}: Prop) => {
     const [show, setShow] = useState<boolean>(false)
 
 
-    const handleSubmit = async (values, {setSubmitting}) => {
+    const handleSubmit = async (values:any, {setSubmitting}:any) => {
         try {
+            show
             setSubmitting(true);
             const credentials: AuthRequest = {
                 email: values.email,
@@ -81,7 +82,7 @@ const Register = ({setMode}: Prop) => {
                     setShow(true)
                 })
             setSubmitting(false);
-        } catch (error) {
+        } catch (error:any) {
             if (error.message === "Network Error") {
                 setCustomAlert({
                     message: "Can't connect to server !!! Try Again after sometimes.",

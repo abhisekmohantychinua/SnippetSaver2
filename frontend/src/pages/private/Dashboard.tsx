@@ -16,6 +16,7 @@ const Dashboard = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {
         const fetchData = async () => {
+            token
             let tokenFromSession: string | null = sessionStorage.getItem("token");
             if (tokenFromSession !== null) {
                 setToken(tokenFromSession);
@@ -69,6 +70,7 @@ const Dashboard = () => {
 
                 </>
             )}
+
         </>
     );
 };

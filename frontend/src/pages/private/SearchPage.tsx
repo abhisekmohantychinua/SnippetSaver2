@@ -1,10 +1,10 @@
 import {useNavigate, useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {UserDto} from "../../models/dto/user/UserDto.tsx";
 import {SnippetDto} from "../../models/dto/snippet/SnippetDto.tsx";
 import {Card, Container, Dropdown, Spinner, Tab, Tabs} from "react-bootstrap";
 import api from "../../api/AxiosConfig.tsx";
-import {AxiosResponse} from "axios/index";
+import {AxiosResponse} from "axios";
 import {AxiosError} from "axios";
 import {ErrorDto} from "../../models/ErrorDto.tsx";
 import {FaCode} from "react-icons/fa6";

@@ -1,4 +1,3 @@
-import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Button from "@mui/material/Button";
 

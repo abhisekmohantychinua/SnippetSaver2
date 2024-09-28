@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {AppUtil} from "../../utils/AppUtil.tsx";
 import {TiTick} from "react-icons/ti";
 import {MdContentCopy} from "react-icons/md";

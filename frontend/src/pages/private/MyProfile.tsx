@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Me} from "../../models/dto/user/Me.tsx";
 import {Alert, Button, Card, Col, Row, Spinner, Tab, Table, Tabs} from "react-bootstrap";
 import api from "../../api/AxiosConfig.tsx";
@@ -7,6 +7,7 @@ import {AppUtil} from "../../utils/AppUtil.tsx";
 import {FaUserEdit} from "react-icons/fa";
 import {MdDelete} from "react-icons/md";
 import {AxiosError, AxiosResponse} from "axios";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import Password from "../../components/Password.tsx";
 import {ReviewDto} from "../../models/dto/review/ReviewDto.tsx";
@@ -46,6 +47,7 @@ const MyProfile = () => {
                         }
 
                     }).catch((error: AxiosError) => {
+                        error
                         Swal.fire({
                             position: "center",
                             icon: "error",
@@ -110,7 +112,7 @@ const MyProfile = () => {
                     />
                     <Button
                         className="my-2 btn-purple"
-                        onClick={(e) => AppUtil.copyToClipBoard(me?.me.id)}
+                        onClick={() => AppUtil.copyToClipBoard(me?.me.id)}
                     >
                         {me?.me.id}
                     </Button>

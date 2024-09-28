@@ -1,4 +1,3 @@
-import React from "react";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Button from "@mui/material/Button";
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {UserDto} from "../../models/dto/user/UserDto.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {Alert, Button, Card, Col, Row, Tab, Table, Tabs} from "react-bootstrap";
@@ -7,7 +7,7 @@ import {AxiosResponse} from "axios";
 import {AppUtil} from "../../utils/AppUtil.tsx";
 import {ReviewDto} from "../../models/dto/review/ReviewDto.tsx";
 import ThreeDot from "../../components/ThreeDot.tsx";
-import {AxiosError} from "axios/index";
+import {AxiosError} from "axios";
 import {ErrorDto} from "../../models/ErrorDto.tsx";
 
 const UserProfile = () => {
@@ -18,6 +18,7 @@ const UserProfile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            token
             let tokenFromSession: string | null = sessionStorage.getItem("token");
             if (tokenFromSession !== null) {
                 setToken(tokenFromSession);
@@ -56,7 +57,7 @@ const UserProfile = () => {
                     />
                     <Button
                         className="my-2 btn-purple"
-                        onClick={(e) => AppUtil.copyToClipBoard(user?.id)}
+                        onClick={() => AppUtil.copyToClipBoard(user?.id)}
                     >
                         {user?.id}
                     </Button>

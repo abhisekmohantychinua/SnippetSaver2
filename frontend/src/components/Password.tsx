@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {MdEdit} from "react-icons/md";
 import * as yup from "yup";
 import * as formik from "formik";
@@ -6,6 +6,7 @@ import {Button, FloatingLabel, Form, Modal, ModalHeader, Spinner} from "react-bo
 import api from '../api/AxiosConfig.tsx'
 import {ChangePassword} from "../models/dto/auth/ChangePassword.tsx";
 import {AxiosError, AxiosResponse} from "axios";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {ErrorDto} from "../models/ErrorDto.tsx";
 import {useNavigate} from "react-router-dom";
@@ -32,7 +33,7 @@ const Password = () => {
             .oneOf([yup.ref("newPassword")], "Passwords must match")
             .required("Please re-enter your password"),
     })
-    const handleSubmit = async (values, {setSubmitting}) => {
+    const handleSubmit = async (values:any, {setSubmitting}: any) => {
         setSubmitting(true)
         try {
             const tokenFromSession = sessionStorage.getItem("token")
@@ -77,6 +78,7 @@ const Password = () => {
             alert("Unhandled error")
         }
     }
+    // @ts-ignore
     return (
         <>
 
@@ -156,7 +158,7 @@ const Password = () => {
 
                         </Form>
                     )}
-                < /Formik>
+                </Formik>
             </Modal>
 
 

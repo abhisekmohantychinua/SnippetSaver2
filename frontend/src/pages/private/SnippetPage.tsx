@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import api from "../../api/AxiosConfig.tsx";
 import {Alert, Col, Container, Row, Spinner} from "react-bootstrap";
 import {atomOneDarkReasonable} from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -14,7 +14,7 @@ import Like from "../../components/Like.tsx";
 import Comment from "../../components/Comment.tsx";
 import Share from "../../components/shares/Share.tsx";
 import ThreeDot from "../../components/ThreeDot.tsx";
-import {AxiosError} from "axios/index";
+import {AxiosError} from "axios";
 import {ErrorDto} from "../../models/ErrorDto.tsx";
 
 const SnippetPage = () => {
@@ -27,6 +27,7 @@ const SnippetPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            token
             let tokenFromSession: string | null = sessionStorage.getItem("token");
             if (tokenFromSession !== null) {
                 setToken(tokenFromSession);
@@ -111,7 +112,7 @@ const SnippetPage = () => {
                                 <Comment snippetDto={snippet}/>
                             </Col>
                             <Col className="col-2">
-                                <Share/>
+                                <Share desc={''} link={''}/>
                             </Col>
                         </Container>
                     </Container>

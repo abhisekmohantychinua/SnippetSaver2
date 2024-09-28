@@ -13,6 +13,7 @@ import {Snippet} from "../models/entity/Snippet.tsx";
 import {SnippetRequestDto} from "../models/dto/snippet/SnippetRequestDto.tsx";
 import api from "../api/AxiosConfig.tsx";
 import {AxiosError, AxiosResponse} from "axios";
+// @ts-ignore
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {BsThreeDots} from "react-icons/bs";
 import {useNavigate} from "react-router-dom";
@@ -120,7 +121,7 @@ const ThreeDot = ((props: Prop) => {
             await api.put(`/api/reviews/${props.obj.id}`,
                 values.review, {headers: {Authorization: "Bearer " + tokenFromSession, "Content-Type": "text/plain"}})
                 .then((response: AxiosResponse<ReviewDto>) => {
-                    const data = response.data;
+                    response.data;
                     Swal.fire({
                         position: 'center',
                         icon: 'success',

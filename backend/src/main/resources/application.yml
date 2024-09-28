@@ -16,9 +16,9 @@ spring:
           starttls:
             enable: true
           auth: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
+#          connectiontimeout: 5000
+#          timeout: 5000
+#          writetimeout: 5000
 management:
   endpoints:
     web:

@@ -2,6 +2,7 @@ import {Button, Container, Form, Nav, Navbar} from "react-bootstrap";
 import {FaUserCircle} from "react-icons/fa";
 import {BiLogOut} from "react-icons/bi";
 import {useNavigate, useParams} from "react-router-dom";
+// @ts-ignore
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import {useState} from "react";
 

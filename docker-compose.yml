@@ -1,0 +1,13 @@
+services:
+  backend:
+    container_name: backend
+    image: coderabhisek/snippet-saver:backend-1.0
+    ports:
+      - 8080:8080
+  frontend:
+    container_name: frontend
+    image: coderabhisek/snippet-saver:frontend-1.0
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend

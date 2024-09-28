@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import api from "../api/AxiosConfig.tsx";
 import {SnippetDto} from "../models/dto/snippet/SnippetDto.tsx";
 import {AxiosResponse} from "axios";
-import {AxiosError} from "axios/index";
+import {AxiosError} from "axios";
 import {ErrorDto} from "../models/ErrorDto.tsx";
 import {useNavigate} from "react-router-dom";
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';

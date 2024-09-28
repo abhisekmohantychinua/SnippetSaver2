@@ -49,9 +49,10 @@ const Login = ({setMode}: Prop) => {
     const [customAlert, setCustomAlert] = useState<CustomAlert>()
     const [show, setShow] = useState<boolean>()
 
-    const handleSubmit = async (values, {setSubmitting}) => {
+    const handleSubmit = async (values:any, {setSubmitting}:any) => {
         setCustomAlert(undefined)
         try {
+            show
             setSubmitting(true);
             const credentials: AuthRequest = {
                 email: values.email,
@@ -65,6 +66,7 @@ const Login = ({setMode}: Prop) => {
                     navigate('/user/dashboard',)
                 })
                 .catch((error) => {
+                    console.log(error)
                     setCustomAlert({
                         message: "Invalid email and password.",
                         show: true,
@@ -74,7 +76,7 @@ const Login = ({setMode}: Prop) => {
                     })
                 })
 
-        } catch (error) {
+        } catch (error:any) {
             if (error.message === "Network Error") {
                 console.log(error)
                 setCustomAlert({

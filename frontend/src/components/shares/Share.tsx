@@ -8,18 +8,18 @@ import LinkedIn from "./LinkedIn.tsx";
 import Instagram from "./Instagram.tsx";
 import CopyToClipBoard from "./CopyToClipBoard.tsx";
 
-const style = {
-    borderRadius: "20px",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 300,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4
-};
+// const style = {
+//     borderRadius: "20px",
+//     position: "absolute",
+//     top: "50%",
+//     left: "50%",
+//     transform: "translate(-50%, -50%)",
+//     width: 300,
+//     bgcolor: "background.paper",
+//     border: "2px solid #000",
+//     boxShadow: 24,
+//     p: 4
+// };
 
 interface Prop {
     link: string,
