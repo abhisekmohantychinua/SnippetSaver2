@@ -1,17 +1,14 @@
 FROM node:18-alpine AS build
-
 WORKDIR /build
 
 COPY package*.json ./
 RUN npm install
-
 COPY . .
+RUN npm run build
 
-# Final Stage
-FROM node:18-alpine
 
-WORKDIR /app
-COPY --from=build /build .
-
-EXPOSE 3000
-CMD npm run preview
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /build/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

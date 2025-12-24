@@ -58,7 +58,7 @@ public class AuthServiceImpl implements AuthService {
                 .messages("Thank you for Registering in SnippetService.\n\n\n" +
                         "Your verification token : " + verificationToken + "\n" +
                         "\t\tOR\n\n" +
-                        "Verify yourself at http://localhost:3000/createaccount/" + verificationToken
+                        "Verify yourself at http://localhost/createaccount/" + verificationToken
                 )
                 .build();
         MailUtil.sendMail(mail);
@@ -133,7 +133,7 @@ public class AuthServiceImpl implements AuthService {
         Mail mail = Mail.builder()
                 .to(request.getEmail())
                 .subject("Password Reset Request !!!")
-                .messages("http://localhost:3000" +
+                .messages("http://localhost" +
                         "/forget-password/" +
                         verificationToken +
                         "\n If It is not you contact the developers or give feedback about this issue.")

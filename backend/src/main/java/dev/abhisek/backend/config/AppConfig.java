@@ -54,7 +54,7 @@ public class AppConfig {
             public void addCorsMappings(@Nonnull CorsRegistry registry) {
                 registry
                         .addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000")
+                        .allowedOrigins("http://localhost","http://localhost:80")
                         .allowedHeaders("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE","PATCH");
             }
